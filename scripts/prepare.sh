@@ -1,4 +1,4 @@
 #!/bin/bash
 
-conda env remove --name speclib
+conda remove --name speclib --all
 conda env create --file environment.yml
