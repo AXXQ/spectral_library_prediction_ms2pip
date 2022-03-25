@@ -29,6 +29,7 @@ def run_ms2pip(config_path: str, peprec_path: str):
     '-c', config_path,
     ' ', peprec_path
     ]
+    print(command)
 
     try:
         output = subprocess.check_output(command, stderr=subprocess.STDOUT)

@@ -17,7 +17,7 @@ def select_peptide(spectra: DataFrame, spec_id_select: str):
     #spectra = spectra.set_index('spec_id')
 
     peptide = spectra.loc[spectra.spec_id == spec_id_select,
-    ['spec_id','ion','mz','prediction']].reset_index(drop=True)
+    ['spec_id','ion','mz','prediction', 'sequence']].reset_index(drop=True)
     peptide = peptide.sort_values('mz', ascending=True)
 
     return peptide
