@@ -30,6 +30,8 @@ def run_ms2pip(config_path: str, peprec_path: str):
     ' ', peprec_path
     ]
 
+    print(command)
+
     try:
         output = subprocess.check_output(command, stderr=subprocess.STDOUT)
         print(output.decode("utf-8"))

@@ -12,7 +12,7 @@ This repository contains code to convert the Mass Dynamics Peptide Mapping workf
 # Get predictions using MS2pip and Mass Dynamics search results as input
 
 ```bash
-python md_spectral_prediction/main.py --search_results_path test_data/searchResult.json --output_directory output_data --config_ms2pip config
+python md_spectral_prediction/main.py --search_results_path test_data/searchResults_subset.json --output_directory output_data --config_ms2pip test_data/config.txt
 ```
 
 # Plot predictions
