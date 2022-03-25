@@ -1,0 +1,10 @@
+# https://zhauniarovich.com/post/2020/2020-06-clearing-jupyter-output/
+repos:
+  - repo: local
+    hooks:
+      - id: jupyter-nb-clear-output
+        name: jupyter-nb-clear-output
+        stages: [commit]
+        files: \.ipynb$
+        language: system
+        entry: jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace
