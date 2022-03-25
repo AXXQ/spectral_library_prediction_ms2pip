@@ -47,10 +47,13 @@ ms2pip -c ./test_data/config.txt ./output_data/search.peprec
 **Merge predictions with initial search results**
 
 ```python
-prediction = pd.read_csv("test_data/searchResults_subset.csv")
+import panda as pd
+import os
+
+prediction = pd.read_csv("output_data/search_HCD_predictions.csv")
 peprec_input = pd.read_csv("output_data/search.peprec", sep="\t")
 preciction1 = prediction.merge(peprec_input, how='left')
-preciction1.to_csv(os.path.join("output_data", 'final_predictions.csv'))
+preciction1.to_csv(os.path.join("output_data", 'final_predictions.csv'), index=False)
 ```
 
 
