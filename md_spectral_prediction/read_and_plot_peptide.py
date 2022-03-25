@@ -17,7 +17,7 @@ def select_peptide(spectra: DataFrame, spec_id_select: str):
     #spectra = spectra.set_index('spec_id')
 
     peptide = spectra.loc[spectra.spec_id == spec_id_select,
-    ['spec_id','ion','mz','prediction', 'sequence']].reset_index(drop=True)
+    ['spec_id','ion','mz','prediction', 'peptide']].reset_index(drop=True)
     peptide = peptide.sort_values('mz', ascending=True)
 
     return peptide
@@ -25,6 +25,8 @@ def select_peptide(spectra: DataFrame, spec_id_select: str):
 def plot_spectrum(output_directory: str, peptide: DataFrame):
     x=peptide.loc[:,'mz'].reset_index(drop=True)
     y=peptide.loc[:,'prediction'].reset_index(drop=True)
+
+    sequence = peptide.peptide[0]
 
     ion_type = peptide.loc[:, 'ion'].reset_index(drop=True)
     my_color = np.where(ion_type=='B', 'orange', 'skyblue')
@@ -34,7 +36,7 @@ def plot_spectrum(output_directory: str, peptide: DataFrame):
     plt.scatter(x, y, color=my_color, s=1, alpha=1)
 
     # Add title and axis names
-    plt.title("peptide (Spec ID: 0)", loc='left')
+    plt.title(f"Peptide Sequence:{sequence}", loc='left')
     plt.xlabel('m/z')
     plt.ylabel('intensity')
 
